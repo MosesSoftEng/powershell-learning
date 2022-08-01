@@ -4,22 +4,23 @@
 Import-Module BurntToast
 
 $int = 0
+$url = "john.ur.ac.rw:7771/pls/prodi03/w99pkg.mi_login"
 
 while (1){
-	$result = ping john.ur.ac.rw:7771/pls/prodi03/w99pkg.mi_login
+	$result = ping $url
 
-	Write-Host $result
+	Write-Host "Check ${int}: $result"
 
 	if($result -like "Ping request could not find*") {
 
 		
 	} else {
-		$int = $int + 1
 
-		New-BurntToastNotification -Text 'Check $int: PowerShell notification','Rwanda Application!','Site is online!'
+		New-BurntToastNotification -Text 'Check ${int}: PowerShell notification','Rwanda Application!','Site is online!'
 
         break
 	}
 
+    $int = $int + 1
 	Start-Sleep -Seconds 60
 }
